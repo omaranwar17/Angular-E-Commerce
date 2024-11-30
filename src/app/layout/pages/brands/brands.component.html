@@ -1,0 +1,78 @@
+<div class="">
+
+
+
+@if (!isLoding) {
+  <div class=" sm:grid my-16 bg-gray-50 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 py-10  mt-15 mb-28 xl:grid-cols-5 ">
+    @for (prod of allBrands  ; track prod._id) {
+      <div (click)="getBrandsId(prod._id)" class=" my-5 h-full  product cursor-pointer bg-gray-50 border border-gray-100 shadow ">
+
+        <div  class="">
+
+          <img class="w-full" [src]="prod.image" alt="" />
+
+          <div class="p-2">
+            <h2 class=" text-center ">{{prod.name}} </h2>
+
+
+          </div>
+
+
+
+          </div>
+        </div>
+    }
+  </div>
+
+@if (brandsId) {
+  <div  class=" bg-gray-300 z-50  shadow-md  fixed  top-14 start-4 md:top-56 md:start-72">
+
+    <div  class="my-5 h-full  product cursor-pointer bg-gray-50 border border-gray-100 shadow ">
+   <i (click)="romove(brand)" class="fa-solid text-red-500 text-xl fa-xmark cursor-pointer"></i>
+      <div  class=" flex  items-center gap-4 justify-between">
+<div class="p-4">
+<h2 class=" text-center ">{{brandsId?.name}} </h2>
+<h2 class=" text-center ">{{brandsId?.slug}} </h2>
+</div>
+
+
+        <div class="p-2">
+
+          <img class=" w-full " [src]="brandsId?.image" alt="" />
+
+        </div>
+
+
+
+        </div>
+
+        <button (click)="romove(brand)" class="bg-red-400 text-white py-2 px-4 rounded-lg">remove</button>
+      </div>
+
+</div>
+
+}
+
+
+
+}
+@if (isLoding) {
+  <div class="">
+    <app-loading></app-loading>
+  </div>
+}
+
+
+
+
+
+<!-- @if (isLoding) {
+  <div class="">
+    <app-loading></app-loading>
+  </div>
+} -->
+
+
+
+
+</div>

@@ -1,0 +1,94 @@
+<div class=" max-w-2xl mb-24 sm:mb-0  mx-auto mt-24">
+  <h3 class=" text-green-600 ">login New :</h3>
+
+  <h2 class=" text-red-300 py-2">{{errorMessage}}</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()" class="max-w-2xl  mx-auto">
+
+
+    <div class="relative z-0 w-full mb-5 group">
+      <input formControlName="email" type="email" name="inputEmail" id="inputEmail" class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " required />
+      <label for="inputEmail" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+
+
+      @if (loginForm.get('email')?.errors && loginForm.get('email')?.touched) {
+        <div class=" bg-red-200 text-red-500 py-4 px-16">
+
+      @if (loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched ) {
+
+        <p> email is required</p>
+
+
+      }
+
+      @if (loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched ) {
+
+        <p> email is invalid</p>
+
+
+      }
+
+
+        </div>
+
+        }
+
+  </div>
+
+
+    <div class="relative z-0 w-full mb-5 group">
+        <input formControlName="password" type="password" name="inputPassword" id="inputPassword" class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " required />
+        <label for="inputPassword" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+
+     @if (loginForm.get('password')?.errors && loginForm.get('password')?.touched) {
+        <div class=" bg-red-200 text-red-500 py-4 px-16">
+
+      @if (loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched ) {
+
+        <p> password is required</p>
+
+
+      }
+
+      @if (loginForm.get('password')?.errors?.['pattern'] && loginForm.get('password')?.touched ) {
+
+        <p> password is invalid match pattern </p>
+
+
+      }
+
+
+
+
+        </div>
+
+        }
+
+
+    </div>
+
+<div class=" flex gap-3 ms-auto">
+
+
+
+  <button [disabled]="loginForm.invalid" type="submit" class="text-white  bg-green-500 rounded-lg px-16 py-2 ">
+    login
+
+@if (isLoding) {
+
+
+  <i class="fa-solid fa-spinner fa-spin"></i>
+}
+
+
+  </button>
+  <div class="">
+    <h4 routerLink="/forgerPassword" class="py-2 cursor-pointer text-lg hover:text-green-500">forget password</h4>
+    </div>
+
+</div>
+
+
+
+  </form>
+  </div>

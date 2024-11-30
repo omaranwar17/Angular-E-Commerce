@@ -1,0 +1,42 @@
+<div class=" py-5 ">
+
+  <h4 class=" ">categories slider</h4>
+
+@if (!isLoading) {
+  <owl-carousel-o [options]="customOptions">
+
+    @for (item of categSlider; track $index) {
+      <ng-template carouselSlide >
+
+        <img class=" w-full h-full" [src]="item.image" alt="">
+
+      </ng-template>
+    }
+    </owl-carousel-o>
+}
+@if (isLoading) {
+  <div class="">
+    <app-loading></app-loading>
+  </div>
+}
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+<div class=" my-24">
+
+
+@if (!isLoding) {
+  <div  class=" sm:grid bg-gray-50 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 py-10  mt-15 mb-28 xl:grid-cols-5 ">
+    @for (item of categData  ; track item._id) {
+      <div (click)="allCategId(item._id)" class=" my-5 h-full  product cursor-pointer bg-gray-50 border border-gray-100 shadow ">
+
+        <div  class="">
+
+
+          <img class="rounded-lg w-80 h-96" [src]="item.image" alt="" />
+
+          <div class="p-2">
+            <h2 class=" text-center ">{{item.name}} </h2>
+
+
+          </div>
+
+        </div>
+
+
+
+        </div>
+    }
+  </div>
+
+  <!-- categoriesId -->
+  <div  class=" my-5 h-full  product cursor-pointer bg-gray-50 border border-gray-100 shadow ">
+
+    <div  class=" flex items-center gap-7">
+
+      <h2 class="  bg-gray-200 py-2 px-8 text-center ">{{categId?.slug}} </h2>
+
+      <div class="">
+        <h2 class=" bg-gray-200 py-2 px-8 text-center">{{categId?.name}} </h2>
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- categoriesId -->
+}
+@if (isLoding) {
+  <div class="">
+    <app-loading></app-loading>
+  </div>
+}
+
+</div>
+
+
+
+
+
+
+
+
+

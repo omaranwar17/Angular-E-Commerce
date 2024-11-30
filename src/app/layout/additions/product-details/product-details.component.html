@@ -1,0 +1,75 @@
+
+@if (!isLoading) {
+  <div class=" mt-10 py-10 h-full  product cursor-pointer   shadow ">
+    <div  class=" sm:flex gap-6 items-center justify-between">
+  <div class=" sm:w-4/12 ">
+
+
+
+<img class="w-full py-4 inline-block mx-auto h-[280px] " [src]="prodDetails.imageCover" alt="">
+
+
+
+      <owl-carousel-o [options]="customOptions">
+
+        @for (item of prodDetails.images; track $index) {
+          <ng-template carouselSlide >
+
+            <img class=" h-96 w-72" [src]="item" alt="">
+
+          </ng-template>
+        }
+        </owl-carousel-o>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+      <div class="sm:w-8/12">
+        <div class="p-2">
+          <h2 class=" text-center ">{{prodDetails.title.split(" ").slice(0,4).join(" ")}} </h2>
+          <h2 class=" text-center text-gray-500">{{prodDetails.description.split(" ").slice(0,8).join(" ")}} </h2>
+
+        </div>
+        <div class=" p-2 flex items-center justify-between">
+          <div class="">
+            <h4>{{prodDetails.price}}EGP</h4>
+
+          </div>
+
+          <div class="">
+
+            <h4> <i class="fa-solid mx-1 text-yellow-500 fa-star"></i>{{prodDetails.ratingsAverage}}</h4>
+          </div>
+        </div>
+
+
+
+        <div class=" ">
+          <button class=" btn bg-green-500 text-white rounded-lg py-2 inline-block w-full border border-spacing-1 border-green-500 "> add to card</button>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+@if (isLoading) {
+  <div class="">
+    <app-loading></app-loading>
+  </div>
+}
+

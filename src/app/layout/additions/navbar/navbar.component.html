@@ -1,0 +1,78 @@
+
+
+
+
+<nav class=" bg-gray-200 text-center p-3 fixed w-full top-0 right-0 left-0 z-50  text-black">
+  <div class=" container mx-auto sm:flex items-center gap-5 justify-center sm:justify-between">
+
+        <img src="assets/finalProject assets/freshcart-logo.svg" class="h-8 inline-block" alt="Logo" />
+
+        <ul class=" sm:flex mr-auto   gap-4 items-center justify-center ">
+        @if (isLogin) {
+          <li>
+            <a routerLink="/home" routerLinkActive="text-green-600" class=" text-black " >Home</a>
+          </li>
+          <li>
+            <a routerLink="/products" routerLinkActive="text-green-600" class=" text-black  " >products</a>
+          </li>
+          <li>
+            <a routerLink="/cart" routerLinkActive="text-green-600" class=" text-black  " >
+             carts
+            </a>
+          </li>
+          <li>
+            <a routerLink="/categories" routerLinkActive="text-green-600" class=" text-black " >categories</a>
+          </li>
+          <li>
+            <a routerLink="/brands" routerLinkActive="text-green-600" class=" text-black " >brands</a>
+          </li>
+          <li>
+            <a routerLink="/allorders" routerLinkActive="text-green-600" class=" text-black " >allOrders</a>
+          </li>
+        }
+        </ul>
+
+
+      <ul class=" sm:flex    gap-4 items-center justify-center     ">
+        <div class=" flex items-center justify-center gap-2 mr-auto ">
+
+          <i class="fa-brands fa-linkedin"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-google"></i>
+          <i class="fa-brands fa-tiktok"></i>
+
+    <i class="fa-brands fa-twitter"></i>
+
+          </div>
+
+
+      @if (!isLogin) {
+        <li>
+          <a routerLink="/login" routerLinkActive="text-green-600" class=" text-black " >login</a>
+        </li>
+        <li>
+          <a routerLink="/register" routerLinkActive="text-green-600" class=" text-black  " >register</a>
+        </li>
+      }
+
+        @if (isLogin) {
+          <li>
+            <a (click)="logOut()" routerLinkActive="text-green-600 " class=" text-black cursor-pointer " >logout</a>
+          </li>
+        }
+      </ul>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+
+@if (!isLoding) {
+  @if (addCarts.numOfCartItems!=0) {
+    <div class="my-16 z-50 bg-gray-100 rounded-md  p-4">
+
+      <h2>shop carts:</h2>
+      <h2>shop carts item:{{addCarts.numOfCartItems}}</h2>
+
+      <h3  class=" text-green-400"> {{addCarts.data.totalCartPrice|currency:'EGP'}}</h3>
+      @for (item of addCarts.data.products; track $index) {
+
+        <div class="">
+      <div class="flex items-center gap-5 justify-between  py-2  border-b-2 border-green-500">
+      <div class="w-2/12">
+        <img class=" w-full h-full" [src]="item.product.imageCover" alt="">
+      </div>
+      <div class=" w-10/12 flex items-center justify-between">
+      <div class="">
+        <h3>{{item.product.title}}</h3>
+        <p>{{item.price}}</p>
+        <button (click)="removeIiem(item.product._id)"> <i class="fa-solid text-green-400 text-xl me-2 fa-trash"></i>remove</button>
+      </div>
+      <div class=" flex gap-3">
+        <button (click)="upidetIiem(item.product._id , item.count+1)" class="bg-green-500 text-white border px-4 rounded-lg border-spacing-1 border-gray-100" >+</button>
+        <span class=" ">{{item.count}}</span>
+        <button [disabled]="item.count == 1" (click)="upidetIiem(item.product._id , item.count-1)" class=" bg-green-500 text-white border px-4 rounded-lg border-spacing-1 border-gray-100">-</button>
+      </div>
+      </div>
+
+
+
+
+      </div>
+    </div>
+
+
+
+    }
+
+
+    <div class=" py-6">
+      <button [routerLink]="['/address/' + addCarts.cartId]" class=" py-2 px-6 rounded-lg text-white bg-green-500" >all orders</button>
+    </div>
+    </div>
+  }@else {
+    <div class=" text-center mt-24">
+      <h2>cart is  empty</h2>
+    </div>
+
+  }
+
+
+}
+@if (isLoding) {
+  <div class=" ">
+  <app-loading></app-loading>
+  </div>
+}
+
+
+
+
+
+
