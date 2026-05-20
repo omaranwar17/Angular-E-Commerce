@@ -1,4 +1,4 @@
-<div class=" max-w-2xl mb-24 sm:mb-0  mx-auto mt-24">
+<div class=" max-w-2xl mx-auto mt-12 sm:mt-24 px-4 sm:px-0 mb-24 sm:mb-0">
   <h3 class=" text-green-600 ">login New :</h3>
 
   <h2 class=" text-red-300 py-2">{{errorMessage}}</h2>
@@ -12,7 +12,7 @@
 
 
       @if (loginForm.get('email')?.errors && loginForm.get('email')?.touched) {
-        <div class=" bg-red-200 text-red-500 py-4 px-16">
+        <div class=" bg-red-200 text-red-500 px-4 sm:px-8">
 
       @if (loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched ) {
 
@@ -41,7 +41,7 @@
         <label for="inputPassword" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
 
      @if (loginForm.get('password')?.errors && loginForm.get('password')?.touched) {
-        <div class=" bg-red-200 text-red-500 py-4 px-16">
+        <div class=" bg-red-200 text-red-500 px-4 sm:py-2 sm:px-8">
 
       @if (loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched ) {
 
@@ -71,7 +71,7 @@
 
 
 
-  <button [disabled]="loginForm.invalid" type="submit" class="text-white  bg-green-500 rounded-lg px-16 py-2 ">
+  <button [disabled]="loginForm.invalid" type="submit" class="text-white  bg-green-500 rounded-lg px-16 sm:px-6  py-2 ">
     login
 
 @if (isLoding) {
