@@ -1,0 +1,108 @@
+/* Footer Animations and Enhanced Styling */
+
+/* Smooth Transitions */
+a, button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Link Hover Effects */
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 2px solid #16a34a;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Input Focus Styles */
+input:focus {
+  animation: inputFocus 0.3s ease-out;
+}
+
+@keyframes inputFocus {
+  from {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.1);
+  }
+  to {
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.1);
+  }
+}
+
+/* Button Animation */
+button:hover {
+  animation: buttonHover 0.3s ease-out forwards;
+}
+
+@keyframes buttonHover {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Scroll to Top Button Animation */
+button[aria-label="Scroll to top"]:hover {
+  animation: floatButton 0.6s ease-in-out infinite;
+}
+
+@keyframes floatButton {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Subtle gradient background animation for premium feel */
+footer {
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+}
+
+/* Link underline animation */
+.footer-link-hover {
+  position: relative;
+}
+
+.footer-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #16a34a;
+  transition: width 0.3s ease-out;
+}
+
+.footer-link-hover:hover::after {
+  width: 100%;
+}
+
+/* Accessibility - Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .fixed {
+    display: none;
+  }
+  
+  footer {
+    border-top: 2px solid #e5e7eb;
+    page-break-inside: avoid;
+  }
+}
