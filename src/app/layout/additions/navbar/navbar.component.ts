@@ -33,6 +33,12 @@ logOut(){
 this._router.navigate(['/login'])
 }
 
+menuOpen:boolean = false;
+
+toggleMenu():void{
+  this.menuOpen = !this.menuOpen;
+}
+
 
 
 

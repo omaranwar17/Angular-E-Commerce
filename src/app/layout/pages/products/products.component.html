@@ -5,36 +5,112 @@
   <label for="text" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">serch</label>
 </div>
 @if (!isLoding) {
-  <div class=" sm:grid bg-gray-50 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 py-10 xl:grid-cols-5 ">
-    @for (prod of products|filter:serchFilter  ; track prod.id) {
-      <div class=" my-5 h-full  product cursor-pointer bg-gray-50 border border-gray-100 shadow ">
 
-        <div  class="">
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
+    lg:grid-cols-4 xl:grid-cols-5
+    gap-3 md:gap-6 py-6 md:py-10 bg-gray-50">
 
-          <img class="rounded-lg" [src]="prod.imageCover" alt="" />
+    @for (prod of products | filter:serchFilter; track prod.id) {
 
-          <div class="p-2">
-            <h2 class=" text-center ">{{prod.title.split(" ").slice(0,2).join(" ")}} </h2>
-            <h2 class=" text-center text-gray-500 py-3 ">{{prod.description.split(" ").slice(0,4).join(" ")}} </h2>
+      <div
+        class="group h-full overflow-hidden
+        rounded-2xl bg-white border border-gray-100
+        shadow-sm hover:shadow-xl
+        transition-all duration-300
+        hover:-translate-y-1
+
+        flex flex-col">
+
+        <!-- CLICKABLE CONTENT -->
+        <div
+          class="flex flex-col flex-1 cursor-pointer">
+
+          <!-- IMAGE -->
+          <div
+            [routerLink]="['/productDetails' , prod._id]"
+            class="overflow-hidden bg-gray-50 p-3">
+
+            <img
+              class="w-full h-36 md:h-52 object-contain
+              transition-transform duration-500
+              group-hover:scale-105"
+              [src]="prod.imageCover"
+              alt=""
+            />
 
           </div>
-          <div class=" p-2 flex items-center justify-between">
-            <div class="">
-              <h4>{{prod.price}}EGP</h4>
+
+          <!-- CONTENT -->
+          <div class="p-3 md:p-4 flex flex-col flex-1">
+
+            <h2
+              class="text-sm md:text-lg font-semibold
+              text-gray-800 line-clamp-1 text-center">
+
+              {{prod.title.split(" ").slice(0,2).join(" ")}}
+
+            </h2>
+
+            <p
+              class="text-xs md:text-sm text-gray-500
+              mt-2 line-clamp-2 text-center flex-1">
+
+              {{prod.description.split(" ").slice(0,4).join(" ")}}
+
+            </p>
+
+            <!-- PRICE + RATE -->
+            <div class="flex items-center justify-between mt-4">
+
+              <h4
+                class="text-sm md:text-base font-bold text-green-600">
+
+                {{prod.price}} EGP
+
+              </h4>
+
+              <h4
+                class="text-sm text-gray-700 flex items-center">
+
+                <i
+                  class="fa-solid fa-star text-yellow-400 me-1">
+                </i>
+
+                {{prod.ratingsAverage}}
+
+              </h4>
+
             </div>
 
-            <div class="">
+          </div>
 
-              <h4> <i class="fa-solid mx-1 text-yellow-500 fa-star"></i>{{prod.ratingsAverage}}</h4>
-            </div>
-          </div>
         </div>
-          <div class=" ">
-            <button  class=" btn bg-green-500 text-white rounded-lg py-2 inline-block w-full border border-spacing-1 border-green-500 "> add to card</button>
-          </div>
+
+        <!-- BUTTON -->
+        <div class="p-3 pt-0 mt-auto">
+
+          <button
+            class="w-full py-2 md:py-3
+            rounded-xl bg-green-500
+            text-white text-sm md:text-base
+            font-semibold
+            transition-all duration-300
+            hover:bg-green-600
+            hover:shadow-lg">
+
+            Add To Cart
+
+          </button>
+
         </div>
+
+      </div>
+
     }
+
   </div>
+
 }
 @if (isLoding) {
   <div class="">

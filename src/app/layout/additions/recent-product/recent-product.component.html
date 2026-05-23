@@ -8,42 +8,97 @@
 </div>
 
 @if (!isLoding) {
-  <div class=" sm:grid bg-gray-50 mb-24 sm:grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 py-10  xl:grid-cols-5 ">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
+  lg:grid-cols-4 xl:grid-cols-5
+  gap-3 md:gap-6
+  py-6 md:py-10 mb-24 bg-gray-50">
     @for (prod of products | filter :serchFilter ; track prod.id) {
-      <div class=" my-5 h-full  product cursor-pointer bg-gray-50 border border-gray-100 shadow ">
+<div
+  class="group my-2 md:my-4 h-full overflow-hidden
+  rounded-2xl bg-white border border-gray-100
+  shadow-sm hover:shadow-xl
+  transition-all duration-300
+  hover:-translate-y-1
 
-        <div [routerLink]="['/productDetails' , prod._id]" class="">
+  flex flex-col">
 
-          <img class="rounded-lg" [src]="prod.imageCover" alt="" />
+  <!-- CLICKABLE CONTENT -->
+  <div
+    [routerLink]="['/productDetails' , prod._id]"
+    class="flex flex-col flex-1">
 
-          <div class="p-2">
-            <h2 class=" text-center ">{{prod.title.split(" ").slice(0,2).join(" ")}} </h2>
-            <h2 class=" text-center text-gray-500">{{prod.description.split(" ").slice(0,6).join(" ")}} </h2>
+    <!-- Image -->
+    <div class="overflow-hidden bg-gray-50 p-4">
 
-          </div>
-          <div class=" p-2 flex items-center justify-between">
-            <div class="">
-              <h4>{{prod.price}}EGP</h4>
-            </div>
+  <img
+    class="w-full h-40 md:h-56 object-contain
+    transition-transform duration-500
+    group-hover:scale-105"
+    [src]="prod.imageCover"
+    alt=""
+  />
 
-            <div class="">
+</div>
 
-              <h4> <i class="fa-solid mx-1 text-yellow-500 fa-star"></i>{{prod.ratingsAverage}}</h4>
-            </div>
-          </div>
-        </div>
+    <!-- Content -->
+    <div class="p-3 md:p-4 flex flex-col flex-1">
 
+      <h2
+        class="text-sm md:text-lg font-semibold
+        text-gray-800 line-clamp-1">
 
-          <div class=" ">
-            <button (click)="getToCarts(prod._id)" class=" btn bg-green-500 text-white rounded-lg py-2 inline-block w-full border border-spacing-1 border-green-500 "> add to card</button>
-          </div>
-        </div>
+        {{prod.title.split(" ").slice(0,2).join(" ")}}
 
+      </h2>
 
+      <p
+        class="text-xs md:text-sm text-gray-500 mt-2 line-clamp-2 flex-1">
 
+        {{prod.description.split(" ").slice(0,6).join(" ")}}
 
+      </p>
 
+      <!-- Price + Rate -->
+      <div class="flex items-center justify-between mt-4">
 
+        <h4 class="text-sm md:text-base font-bold text-green-600">
+          {{prod.price}} EGP
+        </h4>
+
+        <h4 class="text-sm text-gray-700 flex items-center">
+
+          <i class="fa-solid fa-star text-yellow-400 me-1"></i>
+
+          {{prod.ratingsAverage}}
+
+        </h4>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Button -->
+  <div class="p-3 pt-0 mt-auto">
+
+    <button
+      (click)="getToCarts(prod._id)"
+      class="w-full py-2 md:py-3
+      rounded-xl bg-green-500
+      text-white text-sm md:text-base
+      font-semibold
+      transition-all duration-300
+      hover:bg-green-600
+      hover:shadow-lg">
+
+      Add To Cart
+
+    </button>
+
+  </div>
+
+</div>
 
     }
 
